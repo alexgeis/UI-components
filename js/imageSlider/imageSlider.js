@@ -15,7 +15,8 @@ let curSlide = 0;
 let maxSlide = slides.length - 1;
 
 // add event listener and navigation functionality
-nextSlide.addEventListener("click", function () {
+nextSlide.addEventListener("click", moveNextSlide);
+function moveNextSlide() {
 	// check if current slide is the last and reset current slide
 	if (curSlide === maxSlide) {
 		curSlide = 0;
@@ -27,8 +28,7 @@ nextSlide.addEventListener("click", function () {
 	slides.forEach((slide, indx) => {
 		slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
 	});
-});
-
+}
 // select next slide button
 const prevSlide = document.querySelector(".btn-prev");
 
@@ -46,3 +46,9 @@ prevSlide.addEventListener("click", function () {
 		slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
 	});
 });
+
+// interval timer to advance photos every 5 seconds (5000ms)
+const slideAdvance = setInterval(() => {
+	moveNextSlide();
+	clearInterval(slideAdvance);
+}, 5000);
