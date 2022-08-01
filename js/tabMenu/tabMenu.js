@@ -1,10 +1,10 @@
 //add event listener to all tab links
 const tablinks = document.getElementsByClassName("tab-link");
 for (let i = 0; i < tablinks.length; i++) {
-	tablinks[i].addEventListener("click", activeTab);
+	tablinks[i].addEventListener("click", activateTab);
 }
 
-function activeTab(event) {
+function activateTab(event) {
 	// Create the tab content ID by altering the incoming tab link ID
 	// input: "tab-link-1"  =>  output: "tab1"
 	const id = `tab${event.target.id.split("-")[2]}`;
